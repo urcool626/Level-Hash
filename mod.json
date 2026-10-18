@@ -13,17 +13,21 @@
 			]
 		}
 	},
+	"links": {
+		"homepage": "https://urcool626.github.io/levelhash.html",
+		"community": "https://discord.gg/wbRZz8GXxt",
+		"source": "https://github.com/urcool626/Level-Hash"
+	},
 	"id": "urcool626.levelhash",
 	"name": "Level Hash",
 	"version": "v1.0.0",
 	"developer": "urcool626",
-	"description": "Mod that can retrieve the fingerprint for Geometry Dash levels to help detect cheating such as Level Edit.",
+	"description": "Mod that can generate a fingerprint for Geometry Dash levels to help detect cheating such as Level Edit.",
 	"dependencies": {
 		"geode.node-ids": ">=v1.23.3",
 		"hjfod.gmd-api": "1.5.0"
 	},
 	"tags": [
-		"utility",
-		"enhancement"
+		"utility"
     ]
 }
