@@ -2,10 +2,6 @@
 #include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/ui/BasedButtonSprite.hpp>
 
-// Simple SHA-256 hashing system for fingerprinting Geometry Dash levels.
-// This can be used to determine whether level edit or something similar was used to make nerfs to a level secretly.
-// Made by urcool626
-
 using namespace geode::prelude;
 
 class $modify(LevelHashLayer, LevelInfoLayer) {
@@ -13,15 +9,12 @@ class $modify(LevelHashLayer, LevelInfoLayer) {
 		if (!LevelInfoLayer::init(level, challenge))
 			return false;
 
-		auto menu = this->getChildByID("left-side-menu");
-
+		auto menu = getChildByID("left-side-menu");
 		if (!menu) {
-			// Fallback
 			log::warn("Could not find left-side-menu!");
 			return true;
 		}
 
-		// Create the mod's button
 		auto sprite = CircleButtonSprite::createWithSpriteFrameName(
 			"GJ_levelHashIcon.png"_spr,
 			0.8f,
@@ -30,15 +23,14 @@ class $modify(LevelHashLayer, LevelInfoLayer) {
 		);
 
 		if (!sprite) {
-			// Fallback
-			log::warn("Failed to load GJ_levelHashIcon.png");
+			log::warn("Failed to load level hash icon.");
 			return true;
 		}
 
 		auto button = CCMenuItemExt::createSpriteExtra(
 			sprite,
 			[this](CCMenuItemSpriteExtra*) {
-				this->showLevelFingerprint();
+				showLevelFingerprint();
 			}
 		);
 
@@ -47,7 +39,6 @@ class $modify(LevelHashLayer, LevelInfoLayer) {
 
 		button->setID("level-fingerprint-button");
 		button->setPosition({0.f, -100.f});
-
 		menu->addChild(button);
 
 		return true;
@@ -55,39 +46,32 @@ class $modify(LevelHashLayer, LevelInfoLayer) {
 
 	void showLevelFingerprint() {
 		if (!m_level) {
-			FLAlertLayer::create(
-				"Level Hash",
-				"No level is available.",
-				"OK"
-			)->show();
+			showMessage("No level is available.");
 			return;
 		}
 
-		// Hash the level data
-		auto const& levelData = m_level->m_levelString;
+		auto const& data = m_level->m_levelString;
 
-		if (levelData.empty()) {
-			// Fallback
-			FLAlertLayer::create(
-				"Level Hash",
-				"The level data is empty or has not loaded yet.",
-				"OK"
-			)->show();
+		if (data.empty()) {
+			showMessage("Level data is empty or has not loaded yet.");
 			return;
 		}
 
 		geode::Sha256Hasher hasher;
-		hasher.update(levelData.data(), levelData.size());
+		hasher.update(data.data(), data.size());
 
 		auto fingerprint = hasher.finish().toString();
 
-		// Return hashed level data
+		log::info("Level Hash: {}", fingerprint);
+		showMessage(fingerprint);
+	}
+
+private:
+	void showMessage(std::string const& message) {
 		FLAlertLayer::create(
 			"Level Hash",
-			fingerprint.c_str(),
-							 "OK"
+			message,
+			"OK"
 		)->show();
-
-		log::info("Level Hash: {}", fingerprint);
 	}
 };
