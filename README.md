@@ -1,5 +1,6 @@
 # Level Hash
 Level Hash is a mod that can generate a fingerprint for Geometry Dash levels to help detect cheating such as Level Edit.
+Disclaimer: AI was used to help make this project possible.
 
 <img src="logo.png" width="150" alt="the mod's logo" />
 
