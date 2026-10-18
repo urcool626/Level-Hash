@@ -20,7 +20,7 @@
 	},
 	"id": "urcool626.levelhash",
 	"name": "Level Hash",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "urcool626",
 	"description": "Mod that can generate a fingerprint for Geometry Dash levels to help detect cheating such as Level Edit.",
 	"dependencies": {
