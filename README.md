@@ -34,7 +34,7 @@ This mod requires [GDShare](https://github.com/HJfod/GDShare)
 To install this mod follow the instructions below.
 If you built the mod yourself, it should automatically be installed and you can skip the installation process.
 
-1. Download the latest release
+1. [Download the latest release](https://github.com/urcool626/Level-Hash/releases)
 
 2. Move the downloaded file to
 
