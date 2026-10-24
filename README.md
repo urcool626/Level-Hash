@@ -3,6 +3,8 @@ Level Hash is a mod that can generate a fingerprint for Geometry Dash levels to 
 
 Disclaimer: AI was used to help make this project possible.
 
+[I Made a Mod to Detect CHEATERS in Geometry Dash!](https://www.youtube.com/watch?v=nmsVMrcseTk)
+
 <img src="logo.png" width="150" alt="the mod's logo" />
 
 ## Features
@@ -26,3 +28,14 @@ The necessary instructions for installing them are available at https://docs.geo
 
 ## Dependencies
 This mod requires [GDShare](https://github.com/HJfod/GDShare)
+
+## Installation
+
+To install this mod follow the instructions below.
+If you built the mod yourself, it should automatically be installed and you can skip the installation process.
+
+1. Download the latest release
+
+2. Move the downloaded file to
+
+    ``Geometry Dash/geode/mods/``
